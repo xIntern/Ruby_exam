@@ -1,0 +1,9 @@
+I"“(function() {
+  $(function() {
+    return $('#search').on('keyup', function(event) {
+      return console.log(this);
+    });
+  });
+
+}).call(this);
+:ET

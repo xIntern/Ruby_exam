@@ -1,0 +1,37 @@
+I"‹(function() {
+  $(function() {
+    $('#toggle-search').click(function(event) {
+      event.preventDefault();
+      $('#search-form').show();
+      return $('#brand, #menu').hide();
+    });
+    $('#search').on('blur', function(event) {
+      $('#search-form').hide();
+      return $('#brand, #menu').show();
+    });
+    return $('#search').on('keyup', function(event) {
+      var input;
+      input = $(this).val();
+      if (input.length < 3) {
+        return false;
+      }
+      return $.ajax({
+        url: 'http://www.omdbapi.com/',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          s: input
+        }
+      }).done(function() {
+        return console.log("success");
+      }).fail(function() {
+        return console.log("error");
+      }).always(function(response) {
+        console.log(response);
+        return console.log("complete");
+      });
+    });
+  });
+
+}).call(this);
+:ET

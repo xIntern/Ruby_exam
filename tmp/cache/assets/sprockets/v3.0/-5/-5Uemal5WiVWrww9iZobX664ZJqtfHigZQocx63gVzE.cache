@@ -1,0 +1,32 @@
+I"a(function() {
+  $(function() {
+    $('#toggle-search').click(function(event) {
+      event.preventDefault();
+      $('#brand, #menu').hide();
+      $('#search-form').show();
+      return $('#search').focus();
+    });
+    $('#search').on('blur', function(event) {
+      $('#search-form').hide();
+      return $('#brand, #menu').show();
+    });
+    return $('#search').autocomplete({
+      data: $.ajax({
+        url: '/path/to/file',
+        type: 'default GET (Other values: POST)',
+        dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+        data: {
+          param1: 'value1'
+        }
+      }).done(function() {
+        return console.log("success");
+      }).fail(function() {
+        return console.log("error");
+      }).always(function() {
+        return console.log("complete");
+      })
+    });
+  });
+
+}).call(this);
+:ET

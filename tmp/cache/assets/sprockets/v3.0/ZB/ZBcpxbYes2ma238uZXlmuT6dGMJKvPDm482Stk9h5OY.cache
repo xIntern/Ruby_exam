@@ -1,0 +1,18 @@
+I"Ó(function() {
+  $(function() {
+    $('#toggle-search').click(function(event) {
+      event.preventDefault();
+      $('#search-form').show();
+      return $('.nav-wrapper :not(#search-form)').hide();
+    });
+    $('#search').on('blur', function(event) {
+      $('#search-form').hide();
+      return $('.nav-wrapper :not(#search-form)').show();
+    });
+    return $('#search').on('keyup', function(event) {
+      return console.log(this);
+    });
+  });
+
+}).call(this);
+:ET

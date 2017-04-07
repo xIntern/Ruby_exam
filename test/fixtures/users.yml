@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fixed:
+  username: example
+  email: email@example.com
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+random:
+  <% t = Time.new %>
+  username: <%= t.to_i %>
+  email: <%= t.to_f %>
+  password_digest: <%= BCrypt::Password.create(t.to_i) %>
+
+empty:
+  username:
+  email:
+  password_digest:

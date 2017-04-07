@@ -1,0 +1,24 @@
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <div id="brand">
+        <%= link_to front_page_index_path, :class => 'brand-logo' do %>
+            <i class="material-icons md-36">movie</i>RMDB
+        <% end %>
+      </div>
+      <div id="search-form" style="display: none;">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" autocomplete="off">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+      <ul id="menu" class="right">
+        <li id="toggle-search"><a href="#"><i class="material-icons">search</i></a></li>
+        <li><%= link_to 'Login', users_path %></li>
+      </ul>
+    </div>
+  </nav>
+</div>
