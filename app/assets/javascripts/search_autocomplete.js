@@ -40,7 +40,6 @@ function ajaxAutoComplete(options) {
         };
 
         $autocomplete.on('click', 'li', function () {
-            console.log($(this).data('imdb'));
             $input.val($(this).text().trim());
             $autocomplete.empty();
             $autocomplete.closest('#search-form').hide();
@@ -108,13 +107,14 @@ function ajaxAutoComplete(options) {
             }
 
             var val = $input.val().toLowerCase();
-            $autocomplete.empty();
+            // $autocomplete.empty();
 
             if (val.length > options.minLength) {
 
                 timeout = setTimeout(function () { // comment this line to remove timeout
                     runningRequest = true;
 
+                    var asdf = 1;
                     request = $.ajax({
                         type: options.method,
                         url: options.ajaxUrl,
@@ -124,18 +124,20 @@ function ajaxAutoComplete(options) {
                             var resultHtml = [];
                             if (!$.isEmptyObject(data)) { // (or other) check for empty result
                                 $.each(data, function(i, movie) {
-                                    resultHtml.push('<a href="/movie/' + movie.imdbID + '"><li class="collection-item"><img src="' + movie.Poster + '" class="left">' + movie.Title + '</li></a>');
+                                    console.log(movie);
+                                    if (movie.Poster == "N/A") {
+                                        resultHtml.push('<a href="/movie/' + movie.imdbID + '"><li class="collection-item"><h5>' + movie.Title + ' (' + movie.Year + ')</h5></li></a>');
+                                    } else {
+                                        resultHtml.push('<a href="/movie/' + movie.imdbID + '"><li class="collection-item"><img src="' + movie.Poster + '" class="left"><h5>' + movie.Title + ' (' + movie.Year + ')</h5></li></a>');
+                                    }
                                 });
                             } else {
                                 resultHtml.push('<li>No results</li>')
                             }
                             $autocomplete.append(resultHtml.join(''));
-                        },
-                        complete: function () {
-                            runningRequest = false;
                         }
                     });
-                }, 250); // comment this line to remove timeout
+                }, 350); // comment this line to remove timeout
             }
         });
 
