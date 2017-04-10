@@ -114,17 +114,16 @@ function ajaxAutoComplete(options) {
                 timeout = setTimeout(function () { // comment this line to remove timeout
                     runningRequest = true;
 
-                    var asdf = 1;
                     request = $.ajax({
                         type: options.method,
                         url: options.ajaxUrl,
+                        dataType: 'json',
                         data: {s: val},
                         success: function (json) {
                             data = json.Search;
                             var resultHtml = [];
                             if (!$.isEmptyObject(data)) { // (or other) check for empty result
                                 $.each(data, function(i, movie) {
-                                    console.log(movie);
                                     if (movie.Poster == "N/A") {
                                         resultHtml.push('<a href="/movie/' + movie.imdbID + '"><li class="collection-item"><h5>' + movie.Title + ' (' + movie.Year + ')</h5></li></a>');
                                     } else {
