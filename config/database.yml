@@ -13,9 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
-  host: localhost
+  username: gupezawek46gb2nx
+  password: kp01zhchd5kpooru
+  host: gmgcjwawatv599gq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
 
 development:
   <<: *default
